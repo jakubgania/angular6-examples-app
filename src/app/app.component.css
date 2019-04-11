@@ -61,9 +61,8 @@
 .section
 {
     width: 50%;
-    /* min-height: 40vh; */
-    /* height: auto;*/
-    height: calc(100vh - 320px);
+    height: auto;
+    min-height: calc(100vh - 320px);
 }
 .tasks-to-do
 {

@@ -1,0 +1,126 @@
+.page-title-section
+{
+    background-color: #304ffe;
+}
+.page-title
+{
+    font-size: 50px;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    color: #ffffff;
+}
+.content-container
+{
+    width: 100%;
+    clear: both;
+}
+.new-task-text-section
+{
+   width: 30%;
+   background-color: #b2ebf2;
+}
+.new-task-text
+{
+    font-size: 26px;
+    text-align: right;
+    padding-right: 20px;
+}
+.new-task-input-section
+{
+    width: 70%;
+    background-color: #b2ebf2;
+}
+.task-input
+{
+    width: 60%;
+    height: 44px;
+    outline: none;
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 26px;
+    font-family: 'Dokdo', cursive;
+}
+.add-task-button
+{
+    width: 140px;
+    height: 44px;
+    line-height: 44px;
+    outline: none;
+    border: none;
+    font-family: 'Dokdo', cursive;
+    margin-left: 20px;
+    font-size: 26px;
+    background-color: lemonchiffon;
+}
+.add-task-button:hover
+{
+    background-color: #ffffff;
+}
+.section
+{
+    width: 50%;
+    /* height: auto; */
+    height: 100%;
+    min-height: calc(100vh - 320px);
+}
+.tasks-to-do
+{
+    background-color: aliceblue;
+}
+.tasks-completed
+{
+    background-color: azure;
+}
+.title-subsection
+{
+    padding-left: 20px;
+    padding-top: 30px;
+    font-size: 26px;
+}
+.list-of-tasks-section
+{
+    margin-top: 14px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.li-section
+{
+    height: auto;
+    margin-top: 10px;
+    background-color: #ffee58;
+    padding: 6px;
+}
+.done
+{
+    background-color: #66ff66;
+}
+.done-button
+{
+    width: 48%;
+    height: 46px;
+    line-height: 40px;
+    border: none;
+    outline: none;
+    font-weight: 800;
+    letter-spacing: 2px;
+    /* float: right; */
+}
+.done-button:hover
+{
+    background-color: floralwhite;
+}
+.task-description
+{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 22px;
+}
+.no-tasks-message
+{
+    text-align: center;
+    font-size: 22px;
+    color: #bfbfbf;
+    padding-top: 100px;
+}

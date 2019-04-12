@@ -1,0 +1,93 @@
+<div>
+	<div class="container">
+		<div class="page-title-section">
+			<div class="page-title">
+				Example Angular todo app <i class="material-icons" style="font-size: 58px;position: relative;top: 16px;">toc</i>
+			</div>
+		</div>
+	</div>
+	<div class="content-container" style="height: 120px; line-height: 120px;">
+		<div class="new-task-text-section" style="float: left;">
+			<div class="new-task-text">
+				<i class="material-icons" style="font-size: 26px;position: relative; top: 6px;">settings</i> New task :
+			</div>
+		</div>
+		<div class="new-task-input-section" style="float: right;">
+			<div class="new-task-input">
+				<input [(ngModel)]="newTask" (keydown.enter)="addNewTask()" type="text" class="task-input" autocomplete="off" spellcheck="false" autocorrect="off">
+				<button (click)="addNewTask()" type="button" class="add-task-button">
+					<i class="material-icons" style="">add</i> Add
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="content-container">
+		<div class="section tasks-to-do" style="float: left;">
+			<div class="title-subsection">
+				Tasks to do : {{ tasksToDoList.length }}
+			</div>
+			<div *ngIf="tasksToDoList.length > 0" class="list-of-tasks-section">
+				<ul style="list-style-type: none;padding: 0px;">
+					<li *ngFor="let task of tasksToDoList; let counterIndex = index" class="li-section">
+						<div style="clear: both;width: 100%;">
+							<div style="font-size:20px;float: left;">
+								{{ counterIndex + 1 }}
+							</div>
+							<div style="font-size:20px;float: right;">
+								{{ task.dateTime }}
+							</div>
+						</div>
+						<div style="clear:both;width: 100%;">
+							<div class="task-description">
+								{{ task.description }}
+							</div>
+						</div>
+						<div style="clear:both;text-align: center;">
+							<button (click)="addCompleteTask(counterIndex)" type="button" class="done-button" style="margin-right: 4px;">
+								<i class="material-icons" style="font-size: 26px;position: relative; top: 8px;">done</i> Done
+							</button>
+							<button (click)="removeTask(counterIndex)" type="button" class="done-button" style="margin-left: 4px;">
+								<i class="material-icons" style="font-size: 26px;position: relative; top: 8px;">delete_outline</i> Remove
+							</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div *ngIf="tasksToDoList.length == 0">
+				<div class="no-tasks-message">
+					No tasks to be done
+				</div>
+			</div>
+		</div>
+		<div class="section tasks-completed" style="float: right;">
+			<div class="title-subsection">
+				Tasks completed : {{ tasksCompletedList.length }}
+			</div>
+			<div *ngIf="tasksCompletedList.length > 0" class="list-of-tasks-section">
+				<ul style="list-style-type: none;padding: 0px;">
+					<li *ngFor="let task of tasksCompletedList; let counterIndex = index" class="li-section done">
+						<div style="clear: both;width: 100%;">
+							<div style="font-size:20px;float: left;">
+								{{ counterIndex + 1 }}
+							</div>
+							<div style="font-size:20px;float: right;">
+								{{ task.dateTime }}
+							</div>
+							<div style="clear:both;width: 100%;">
+								<div class="task-description">
+									{{ task.description }}
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div *ngIf="tasksCompletedList.length == 0">
+				<div class="no-tasks-message">
+					No tasks completed
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -16,14 +16,22 @@ export class AppComponent {
   	tasksCompletedList: Array<object> = [];
 	
 	addNewTask() {
-		this.tasksToDoList.push({'description': this.newTask, 'dateTime': this.getCurrentTime()});
-		this.newTask = '';
-		console.log(this.tasksToDoList)
+        if (this.checkInputIsEmpty(this.newTask)) {
+            this.tasksToDoList.push({'description': this.newTask, 'dateTime': this.getCurrentTime()});
+		    this.newTask = '';
+		    console.log(this.tasksToDoList)
 
-		localStorage.setItem('dataSource', 'tesxty');
+		    localStorage.setItem('dataSource', 'tesxty');
 
-		console.log(localStorage.getItem('dataSource'));
-	}
+		    console.log(localStorage.getItem('dataSource'));
+        } else {
+            alert('Input is empty');
+        }
+    }
+    
+    checkInputIsEmpty(inputText) {
+        return inputText && inputText.length > 0 ? true : false;
+    }
 
 	addCompleteTask(index) {
 		this.tasksCompletedList.push({

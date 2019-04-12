@@ -8,22 +8,48 @@ import {formatDate} from '@angular/common';
 })
 
 export class AppComponent {
-	title = 'example-app';
+    title = 'example-app';
+    saveInLoacalStorageFlag = true;
   	tasksToDoCounter = 0;
 	tasksCompleted = 0;
 	newTask: string;
   	tasksToDoList: Array<object> = [];
-  	tasksCompletedList: Array<object> = [];
+    tasksCompletedList: Array<object> = [];
+      
+    ngOnInit() {
+        if (this.saveInLoacalStorageFlag) {
+            if (this.checkDataExistsInLocalstorage) {
+                this.initializeDataFromLocalStorage()
+            }
+        }    
+    }
+
+    initializeDataFromLocalStorage() {
+        if (localStorage.getItem('tasksToDoList'))
+            this.tasksToDoList = JSON.parse(localStorage.getItem('tasksToDoList'))
+        
+        if (localStorage.getItem('tasksCompletedList'))
+            this.tasksCompletedList = JSON.parse(localStorage.getItem('tasksCompletedList'))
+    }
+
+    checkDataExistsInLocalstorage() {
+        let dataExists = true
+
+        if (localStorage.getItem('tasksToDoList') === null) dataExists = false
+        if (localStorage.getItem('taskCompletedList') === null) dataExists = false
+
+        return dataExists
+    }
 	
 	addNewTask() {
         if (this.checkInputIsEmpty(this.newTask)) {
             this.tasksToDoList.push({'description': this.newTask, 'dateTime': this.getCurrentTime()});
-		    this.newTask = '';
-		    console.log(this.tasksToDoList)
-
-		    localStorage.setItem('dataSource', 'tesxty');
-
-		    console.log(localStorage.getItem('dataSource'));
+            this.newTask = '';
+            
+            if (this.saveInLoacalStorageFlag) {
+                localStorage.setItem('tasksToDoList', JSON.stringify(this.tasksToDoList));
+            }
+		    
         } else {
             alert('Input is empty');
         }
@@ -37,20 +63,28 @@ export class AppComponent {
 		this.tasksCompletedList.push({
 			'description': this.tasksToDoList[index]['description'],
 			'dateTime': this.tasksToDoList[index]['dateTime']
-		});
+        });
 
-		this.removeTask(index)
-
-		console.log(index)
+        this.removeTask(index)
+        
+        if (this.saveInLoacalStorageFlag) {
+            localStorage.setItem('tasksCompletedList', JSON.stringify(this.tasksCompletedList));
+            localStorage.setItem('tasksToDoList', JSON.stringify(this.tasksToDoList));
+        }
 	}
 
 	removeTask(index) {
-		this.tasksToDoList.splice(index, 1);
-		console.log(index)
+        this.tasksToDoList.splice(index, 1);
+
+        if (this.saveInLoacalStorageFlag) {
+            localStorage.setItem('tasksToDoList', JSON.stringify(this.tasksToDoList));
+        }
 	}
 
 	getCurrentTime() {
 		return formatDate(new Date(), 'HH:mm:ss yyyy/MM/dd', 'en');
-	}
+    }
+    
+
 
 }

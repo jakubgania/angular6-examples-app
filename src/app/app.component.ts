@@ -49,7 +49,6 @@ export class AppComponent {
             if (this.saveInLoacalStorageFlag) {
                 localStorage.setItem('tasksToDoList', JSON.stringify(this.tasksToDoList));
             }
-		    
         } else {
             alert('Input is empty');
         }
@@ -84,7 +83,4 @@ export class AppComponent {
 	getCurrentTime() {
 		return formatDate(new Date(), 'HH:mm:ss yyyy/MM/dd', 'en');
     }
-    
-
-
 }
